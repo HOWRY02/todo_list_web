@@ -4,9 +4,6 @@ from starlette.status import HTTP_201_CREATED
 from starlette.staticfiles import StaticFiles
 from src.database import Database  # Import the Database class
 from fastapi.templating import Jinja2Templates
-from passlib.context import CryptContext  # For password hashing
-from fastapi_sessions.base import SessionBase, CookieSession  # Session library
-import secrets  # For generating random secret key
 
 app = FastAPI()
 
@@ -22,15 +19,6 @@ MYSQL_HOST = "localhost"
 MYSQL_USER = "admin"
 MYSQL_PASSWORD = "123456"
 MYSQL_DATABASE = "todo_list"
-
-
-# Secret key for session encryption (replace with a strong random string)
-SECRET_KEY = secrets.token_urlsafe(32)
-
-# Session configuration
-session = CookieSession(generate_secret_key=SECRET_KEY)
-app.dependency_overrides[SessionBase] = session
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 # Dependency for getting the database connection
@@ -55,52 +43,10 @@ class User:
         self.id = id
         self.username = username
 
-
-# # Database methods (update database.py)
-# def create_user(db: Database, username: str, password: str):
-#   hashed_password = pwd_context.hash(password)
-#   # Insert user into database with hashed password
-#   # ... (implementation in database.py)
-
-# def get_user_by_username(db: Database, username: str):
-#   # Fetch user from database based on username
-#   # ... (implementation in database.py)
-
-
-async def get_current_user(session: SessionBase = Depends(session)):
-  user_id = await session.get("user_id")
-  if not user_id:
-    return None
-  return User(user_id, "placeholder_username")  # Replace with actual user data retrieval
-
-
-
-# # Function to retrieve the current user (replace with your authentication logic)
-# async def get_current_user(db: Database = Depends(get_db)):
-#     # Implement logic to retrieve the current user based on a token or session (placeholder)
-#     return User(1, "placeholder_user")  # Replace with actual user data retrieval
-
-
-# ###############################
-@app.post("/login")
-async def login(username: str = Body(...), password: str = Body(...), db: Database = Depends(get_db)):
-    user = db.get_user_by_username(username)
-    if not user:
-        raise HTTPException(status_code=401, detail="Invalid username or password")
-    if not pwd_context.verify(password, user.hashed_password):
-        raise HTTPException(status_code=401, detail="Invalid username or password")
-    # Successful login - store user ID in session
-    await session.set("user_id", user.id)
-    return {"message": "Login successful"}
-
-@app.post("/logout")
-async def logout():
-    await session.clear()
-    return {"message": "Logged out successfully"}
-
-
-
-######################################
+# Function to retrieve the current user (replace with your authentication logic)
+async def get_current_user(db: Database = Depends(get_db)):
+    # Implement logic to retrieve the current user based on a token or session (placeholder)
+    return User(1, "placeholder_user")  # Replace with actual user data retrieval
 
 
 # Task model

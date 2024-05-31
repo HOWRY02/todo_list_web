@@ -12,6 +12,18 @@ class Database:
     def close(self):
         self.connection.close()
 
+    # def get_user(self, username):
+    #     # Replace with your actual query to retrieve user by username
+    #     sql = "SELECT id, username, hashed_password FROM users WHERE username = %s"
+    #     self.cursor.execute(sql, (username,))
+    #     return self.cursor.fetchone()
+
+    def create_user(self, username, hashed_password):
+        # Replace with your actual query to insert a new user
+        self.cursor.execute("INSERT INTO users (username, hashed_password) VALUES (%s, %s)", (username, hashed_password))
+        self.connection.commit()
+        self.cursor.close()
+
     # Define functions for specific database operations (CRUD)
     def insert_task(self, user_id, description):
         # Implement logic to insert a new task

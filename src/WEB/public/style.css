@@ -1,58 +1,222 @@
-body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 20px;
+.todo-container {
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    #task-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    #task-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    #task-list input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    #new-task {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #eee;
+    }
+
+    #pie-chart {
+        width: 400px;
+        height: 400px;
+        margin: 20px auto;
+    }
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-header h1 {
-    font-size: 2em;
-}
-
-#task-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#task-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-#task-list input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-#new-task {
-    padding: 10px;
+/* Page-specific styles */
+.login-container,
+.register-container {
+    width: 300px;
+    /* Adjust width as needed */
+    text-align: center;
+    /* Center the content within the container */
+    padding: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 100%;
-    margin-bottom: 10px;
 }
 
-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.login-container {
+    background-color: #f5f5f5;
+
+    /* Light gray background */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .login-container {
+        width: 300px;
+        /* Adjust width as needed */
+        margin: 50px auto;
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        /* White background for the login form */
+        text-align: center;
+        /* Center the content within the container */
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #3498db;
+        /* Blue button color */
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #2980b9;
+        /* Darken blue on hover */
+    }
+
+    #error-message {
+        color: red;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    a {
+        color: #3498db;
+        /* Blue color for the register link */
+        text-decoration: none;
+        /* Remove underline */
+        margin-top: 10px;
+        /* Add space above the link */
+    }
+
 }
 
-button:hover {
-    background-color: #eee;
-}
+.register-container {
+    background-color: #e0e0e0;
 
-#pie-chart {
-    width: 400px;
-    height: 400px;
-    margin: 20px auto;
+    /* Slightly lighter gray background */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .container {
+        /* Existing styles for container */
+        width: 400px;
+        margin: 50px auto;
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #2980b9;
+    }
+
+    #error-message {
+        color: red;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    a {
+        color: #3498db;
+        text-decoration: none;
+        margin-top: 10px;
+    }
+
 }

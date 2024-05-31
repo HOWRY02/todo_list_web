@@ -1,5 +1,4 @@
 fastapi
 uvicorn
-starlette
-fastapi-sessions
+pyjwt
 mysql-connector-python

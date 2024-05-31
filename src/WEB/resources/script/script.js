@@ -81,7 +81,28 @@ async function deleteTask(taskId) {
     }
 }
 
-getTasks(); // Fetch tasks on page load
-
-// Call your JavaScript library (e.g., Chart.js) to fetch completion data and generate the pie chart
-// This part would depend on the specific library you choose.
+async function logout() {
+    // Send a request to the backend API endpoint for logout
+    fetch('/logout', {
+        method: 'POST' // Use POST for logout requests
+    })
+        .then(response => {
+            if (response.ok) {
+                // Handle successful logout:
+                // - Clear any local storage or session data
+                // - Redirect the user to the login page (optional)
+                window.location.href = "/login"; // Redirect to login page (example)
+            } else {
+                console.error("Logout error:", response.statusText);
+                // Display an error message to the user (optional)
+                alert("An error occurred while logging out. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error("Logout error:", error);
+            // Display an error message to the user (optional)
+            alert("An error occurred while logging out. Please try again.");
+        });
+    // window.location.href = "/login"; // Redirect to login page (optional)
+}
+  
